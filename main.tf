@@ -13,11 +13,6 @@ provider "azurerm" {
   tenant_id       = "1c59824b-b9ed-4308-8c1b-3a0d88a46be9"
 }
 
-variable "admin_password" {
-  type      = string
-  sensitive = true
-}
-
 # -------------------------
 # Resource Group
 # -------------------------
