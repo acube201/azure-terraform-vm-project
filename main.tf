@@ -13,11 +13,6 @@ provider "azurerm" {
   tenant_id       = "***REMOVED***"
 }
 
-variable "admin_password" {
-  type      = string
-  sensitive = true
-}
-
 # -------------------------
 # Resource Group
 # -------------------------
