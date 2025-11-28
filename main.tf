@@ -1,22 +1,3 @@
-terraform {
-  required_providers {
-    azurerm = {
-      source  = "hashicorp/azurerm"
-      version = ">= 3.64.0"
-    }
-  }
-}
-
-provider "azurerm" {
-  features {}
-
-  # Use variables instead of hardcoding for CI/CD
-  subscription_id = var.subscription_id
-  tenant_id       = var.tenant_id
-  client_id       = var.client_id
-  client_secret   = var.client_secret
-}
-
 # -------------------------
 # Resource Group
 # -------------------------
@@ -53,7 +34,7 @@ resource "azurerm_public_ip" "vm_pip" {
   location            = azurerm_resource_group.rg.location
   resource_group_name = azurerm_resource_group.rg.name
   allocation_method   = "Static"
-  sku                 = "Standard"
+  sku                 = "Standard" # Must be Standard for Static
 }
 
 # -------------------------
@@ -108,7 +89,7 @@ resource "azurerm_windows_virtual_machine" "vm" {
   name                = "myTFVM"
   resource_group_name = azurerm_resource_group.rg.name
   location            = azurerm_resource_group.rg.location
-  size                = "Standard_D2_v3"
+  size                = "Standard_D2_v3" # Reliable size in East US
 
   admin_username = "azureuser"
   admin_password = var.admin_password
